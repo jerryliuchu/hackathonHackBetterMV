@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
+        <meta name = "viewport" content ="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type = "text/css" href="../static/index.css">
+
     </head>
     <body>
         <form class = "grid" action = "/result" method ="POST">
             <center>
-                {% if name %}
-                <h3 style=" color: blue;">Hello {{name}}, How are you?</h3>
+                {% if name%}
+
+                    {% if not journal %}
+                <h3 style=" color: blue;">Hello {{name}}. Please share about yourself.</h3>
+                    {% endif %}
+
+                    {% if journal %}
+                <h3 style=" color: blue;">Hello {{name}}. Thank you for sharing about yourself.</h3>
+                    {% endif %}
+
+                {% endif %}
+
+                 {% if not name%}
+                               {% if not journal %}
+                        <h3 style=" color: blue;">Hello {{name}}. Please share about yourself.</h3>
+                                {% endif %}
+
+                    {% if journal %}
+                <h3 style=" color: blue;">Hello {{name}}. Thank you for sharing about yourself.</h3>
+                    {% endif %}
                 {% endif %}
 
             </center>
 
             <label for = "Name">Enter your name:</label>
             <input type = "text" name ="name" id = "name">
+            <label for = "Journal">Tell us how you are feeling today:</label>
+            <input type = "text" name ="journal" id = "journal">
+
             <center><input type="Submit" class = "file_submit"></center>
         </form>
 
