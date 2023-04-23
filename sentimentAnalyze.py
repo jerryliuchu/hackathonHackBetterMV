@@ -1,25 +1,34 @@
-#import the library
+# import SentimentIntensityAnalyzer class
+# from vaderSentiment.vaderSentiment module.
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-#calculate the negative, positive, neutral and compound scores, plus verbal evaluation
-def sentiment_vader(sentence):
 
+# function to print sentiments
+# of the sentence.
+def sentiment_scores(sentence):
     # Create a SentimentIntensityAnalyzer object.
     sid_obj = SentimentIntensityAnalyzer()
 
+    # polarity_scores method of SentimentIntensityAnalyzer
+    # object gives a sentiment dictionary.
+    # which contains pos, neg, neu, and compound scores.
     sentiment_dict = sid_obj.polarity_scores(sentence)
-    negative = sentiment_dict['neg']
-    neutral = sentiment_dict['neu']
-    positive = sentiment_dict['pos']
-    compound = sentiment_dict['compound']
 
-    if sentiment_dict['compound'] >= 0.05 :
-        overall_sentiment = "Positive"
+    n = (sentiment_dict['neg']) * 100
+    ne = sentiment_dict['neu'] * 100
+    p = sentiment_dict['pos'] * 100
 
-    elif sentiment_dict['compound'] <= - 0.05 :
-        overall_sentiment = "Negative"
+    x = "Your journal is " + n + "% negative, " + ne + "% neutral, and " + p + "% positive, and overall, your journal is "
 
-    else :
-        overall_sentiment = "Neutral"
+    # decide sentiment as positive, negative and neutral
+    if sentiment_dict['compound'] >= 0.05:
+        x += "Positive";
 
-    return negative, neutral, positive, compound, overall_sentiment
+    elif sentiment_dict['compound'] <= - 0.05:
+        x += "Negative";
+
+    else:
+        x += "Neutral";
+
+    return x
+
