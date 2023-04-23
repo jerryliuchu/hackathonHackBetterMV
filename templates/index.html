@@ -3,16 +3,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Zen Diary</title>
+        <title>ZenDiary</title>
             <meta name = "viewport" content ="width=device-width, initial-scale=1.0">
 
                 <link rel="stylesheet" type = "text/css" href="../static/index.css">
+                    <style>
+                        .large-text {
+                           font-size: 95px;
+                        }
 
+                        .small-text {
+                            font-size: 50px;
+                        }
+                    </style>
     </head>
     <body>
         <form class = "grid" action = "/result" method ="POST">
             <center>
-                <h3 style="color: white;">Zen Diary</h3>
+                <p class="large-text">Welcome to ZenDiary</p>
+                <p class="small-text">(Scroll Down)</p>
                 {% if name%}
 
                     {% if not journal %}
