@@ -22,6 +22,11 @@ def result():
 
     return render_template("index.html", name = name, journal = journal, s = s);
 
+
+@app.route("/resources")
+def resources():
+    return render_template("resources.html")
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=80)
 
